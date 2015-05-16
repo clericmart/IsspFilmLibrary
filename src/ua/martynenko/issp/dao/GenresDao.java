@@ -5,45 +5,34 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import ua.martynenko.issp.film.Film;
+import ua.martynenko.issp.film.Genres;
 
-
-public class FilmDao {
+public class GenresDao {
 	private static final String CONNECTION_URL = "jdbc:sqlite:C://java//db//filmlibrary.db";
 	private static final String CONNECTION_USER = "";
 	private static final String CONNECTION_PASSWORD = "";
 	
-	private static FilmDao instance = null;
+	private static GenresDao instance = null;
 	
-	private FilmDao() {
+	private GenresDao() {
 		super();
 	}
 	
-	public static FilmDao getInstance(){
+	public static GenresDao getInstance(){
 		if (instance == null) 
-			instance = new FilmDao();
+			instance = new GenresDao();
 		return instance;
 	}
 	
-	public void addActor(Film film) {
+	public void addGenres(Genres genres) {
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
-			if (film.getId() == Film.DEFAULT_ID) {
+			if (genres.getId() == Genres.DEFAULT_ID) {
 				
-				String sql =  "INSERT INTO Film (title, actor_id, genres_id, country_id, duration, imdb, year, description, image, link) "
-							+ "VALUES (?,?,?,?,?,?,?,?,?,?)";			
+				String sql =  "INSERT INTO spr_Genres (name) VALUES (?)";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setString(1, film.getTitle());
-				s.setInt(2, film.getActorId());
-				s.setInt(3, film.getGenresId());
-				s.setInt(4, film.getCountryId());
-				s.setInt(5, film.getDuration());
-				s.setDouble(6, film.getImdb());
-				s.setDate(7, film.getYear());
-				s.setString(8, film.getDescription());
-				s.setString(9, film.getImage());
-				s.setString(10, film.getLink());
-					
+				s.setString(1, genres.getName());
+				
 				System.out.println(s);
 				s.execute();
 			}
@@ -52,13 +41,13 @@ public class FilmDao {
 		}
 	}
 	
-	public void deleteFilm(Integer filmId) {
+	public void deleteGenres(Integer genresId) {
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
 			
-				String sql =  "DELETE FROM Film WHERE id = ?";			
+				String sql =  "DELETE FROM spr_Genres WHERE id = ?";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setInt(1, filmId);
+				s.setInt(1, genresId);
 				
 				System.out.println(s);
 				s.execute();

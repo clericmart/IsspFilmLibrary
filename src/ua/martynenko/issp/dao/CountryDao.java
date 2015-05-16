@@ -5,45 +5,34 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import ua.martynenko.issp.film.Film;
+import ua.martynenko.issp.film.Country;
 
-
-public class FilmDao {
+public class CountryDao {
 	private static final String CONNECTION_URL = "jdbc:sqlite:C://java//db//filmlibrary.db";
 	private static final String CONNECTION_USER = "";
 	private static final String CONNECTION_PASSWORD = "";
 	
-	private static FilmDao instance = null;
+	private static CountryDao instance = null;
 	
-	private FilmDao() {
+	private CountryDao() {
 		super();
 	}
 	
-	public static FilmDao getInstance(){
+	public static CountryDao getInstance(){
 		if (instance == null) 
-			instance = new FilmDao();
+			instance = new CountryDao();
 		return instance;
 	}
 	
-	public void addActor(Film film) {
+	public void addActor(Country country) {
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
-			if (film.getId() == Film.DEFAULT_ID) {
+			if (country.getId() == Country.DEFAULT_ID) {
 				
-				String sql =  "INSERT INTO Film (title, actor_id, genres_id, country_id, duration, imdb, year, description, image, link) "
-							+ "VALUES (?,?,?,?,?,?,?,?,?,?)";			
+				String sql =  "INSERT INTO spr_Country (name) VALUES (?)";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setString(1, film.getTitle());
-				s.setInt(2, film.getActorId());
-				s.setInt(3, film.getGenresId());
-				s.setInt(4, film.getCountryId());
-				s.setInt(5, film.getDuration());
-				s.setDouble(6, film.getImdb());
-				s.setDate(7, film.getYear());
-				s.setString(8, film.getDescription());
-				s.setString(9, film.getImage());
-				s.setString(10, film.getLink());
-					
+				s.setString(1, country.getName());
+				
 				System.out.println(s);
 				s.execute();
 			}
@@ -52,13 +41,13 @@ public class FilmDao {
 		}
 	}
 	
-	public void deleteFilm(Integer filmId) {
+	public void deleteCountry(Integer countryId) {
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
 			
-				String sql =  "DELETE FROM Film WHERE id = ?";			
+				String sql =  "DELETE FROM spr_Country WHERE id = ?";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setInt(1, filmId);
+				s.setInt(1, countryId);
 				
 				System.out.println(s);
 				s.execute();

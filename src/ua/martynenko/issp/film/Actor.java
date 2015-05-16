@@ -5,7 +5,10 @@ public class Actor {
 	private String name;
 	private String secondName;
 	
+	public static final int DEFAULT_ID = -1;
+	
 	public Actor(String n, String s) {
+		id = DEFAULT_ID;
 		setName(n);
 		setSecondName(s);
 	}

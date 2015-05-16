@@ -4,7 +4,10 @@ public class Country {
 	private int id;
 	private String name;
 	
+	public static final int DEFAULT_ID = -1;
+	
 	public Country(String n) {
+		id = DEFAULT_ID;
 		setName(n);
 	}
 	
