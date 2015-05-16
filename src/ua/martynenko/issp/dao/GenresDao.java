@@ -24,14 +24,15 @@ public class GenresDao {
 		return instance;
 	}
 	
-	public void addGenres(Genres genres) {
+	public void addGenres(String name) {
+		Genres g = new Genres(name);
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
-			if (genres.getId() == Genres.DEFAULT_ID) {
+			if (g.getId() == Genres.DEFAULT_ID) {
 				
 				String sql =  "INSERT INTO spr_Genres (name) VALUES (?)";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setString(1, genres.getName());
+				s.setString(1, g.getName());
 				
 				System.out.println(s);
 				s.execute();

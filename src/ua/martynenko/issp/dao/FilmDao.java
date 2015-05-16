@@ -1,6 +1,7 @@
 package ua.martynenko.issp.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -25,24 +26,26 @@ public class FilmDao {
 		return instance;
 	}
 	
-	public void addActor(Film film) {
+	public void addFilm(int actorId, int genresId, int contryId, double imdb, int duration, String title, String description, String image, int year, int month, int day, String link) {
+		@SuppressWarnings("deprecation")
+		Film f = new Film(actorId, genresId, contryId, imdb, duration, title, description, image, new Date(year, month, day), link);
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
-			if (film.getId() == Film.DEFAULT_ID) {
+			if (f.getId() == Film.DEFAULT_ID) {
 				
 				String sql =  "INSERT INTO Film (title, actor_id, genres_id, country_id, duration, imdb, year, description, image, link) "
 							+ "VALUES (?,?,?,?,?,?,?,?,?,?)";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setString(1, film.getTitle());
-				s.setInt(2, film.getActorId());
-				s.setInt(3, film.getGenresId());
-				s.setInt(4, film.getCountryId());
-				s.setInt(5, film.getDuration());
-				s.setDouble(6, film.getImdb());
-				s.setDate(7, film.getYear());
-				s.setString(8, film.getDescription());
-				s.setString(9, film.getImage());
-				s.setString(10, film.getLink());
+				s.setString(1, f.getTitle());
+				s.setInt(2, f.getActorId());
+				s.setInt(3, f.getGenresId());
+				s.setInt(4, f.getCountryId());
+				s.setInt(5, f.getDuration());
+				s.setDouble(6, f.getImdb());
+				s.setDate(7, f.getYear());
+				s.setString(8, f.getDescription());
+				s.setString(9, f.getImage());
+				s.setString(10, f.getLink());
 					
 				System.out.println(s);
 				s.execute();

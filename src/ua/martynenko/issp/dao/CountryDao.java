@@ -24,14 +24,15 @@ public class CountryDao {
 		return instance;
 	}
 	
-	public void addActor(Country country) {
+	public void addCountry(String name) {
+		Country c = new Country(name);
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
-			if (country.getId() == Country.DEFAULT_ID) {
+			if (c.getId() == Country.DEFAULT_ID) {
 				
 				String sql =  "INSERT INTO spr_Country (name) VALUES (?)";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setString(1, country.getName());
+				s.setString(1, c.getName());
 				
 				System.out.println(s);
 				s.execute();

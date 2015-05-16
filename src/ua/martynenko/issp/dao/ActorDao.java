@@ -25,15 +25,16 @@ public class ActorDao {
 		return instance;
 	}
 	
-	public void addActor(Actor actor) {
+	public void addActor(String name, String secondname) {
+		Actor a = new Actor(name, secondname); 
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
-			if (actor.getId() == Actor.DEFAULT_ID) {
+			if (a.getId() == Actor.DEFAULT_ID) {
 				
 				String sql =  "INSERT INTO spr_Actor (name,secondname) VALUES (?, ?)";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
-				s.setString(1, actor.getName());
-				s.setString(2, actor.getSecondName());
+				s.setString(1, a.getName());
+				s.setString(2, a.getSecondName());
 				
 				System.out.println(s);
 				s.execute();
