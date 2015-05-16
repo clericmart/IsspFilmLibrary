@@ -9,6 +9,7 @@ import ua.martynenko.issp.film.Actor;
 
 
 public class ActorDao {
+	// JDBC driver name and database URL
 	private static final String CONNECTION_URL = "jdbc:sqlite:C://java//db//filmlibrary.db";
 	private static final String CONNECTION_USER = "";
 	private static final String CONNECTION_PASSWORD = "";
@@ -24,12 +25,10 @@ public class ActorDao {
 			instance = new ActorDao();
 		return instance;
 	}
-	
 	public void addActor(String name, String secondname) {
-		Actor a = new Actor(name, secondname); 
+		Actor a = new Actor(name, secondname);
 		try(Connection con = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USER, CONNECTION_PASSWORD)) {
 			if (a.getId() == Actor.DEFAULT_ID) {
-				
 				String sql =  "INSERT INTO spr_Actor (name,secondname) VALUES (?, ?)";			
 				PreparedStatement s = con.prepareStatement(sql);
 			
@@ -39,7 +38,8 @@ public class ActorDao {
 				System.out.println(s);
 				s.execute();
 			}
-		} catch (SQLException e) {
+		} catch (SQLException e) { 
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
