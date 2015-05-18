@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.martynenko.issp.dao.ActorDao;
+import ua.martynenko.issp.config.Configuration;
+
 
 /**
  * Servlet implementation class FirstServlet
@@ -23,8 +24,7 @@ public class FirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
-		ActorDao a = ActorDao.getInstance();
-		a.addActor(request.getParameter("name"), request.getParameter("secondname"));
+		response.getWriter().println(Configuration.getInstance().getParameter("URL"));
 	}
 
 	/**

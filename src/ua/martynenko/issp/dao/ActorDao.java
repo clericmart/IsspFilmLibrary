@@ -5,14 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import ua.martynenko.issp.config.Configuration;
 import ua.martynenko.issp.film.Actor;
 
 
 public class ActorDao {
 	// JDBC driver name and database URL
-	private static final String CONNECTION_URL = "jdbc:sqlite:C://java//db//filmlibrary.db";
-	private static final String CONNECTION_USER = "";
-	private static final String CONNECTION_PASSWORD = "";
+	private static final String CONNECTION_URL = Configuration.getInstance().getParameter("URL");
+	private static final String CONNECTION_USER = Configuration.getInstance().getParameter("USER");
+	private static final String CONNECTION_PASSWORD = Configuration.getInstance().getParameter("PASSWORD");
 	
 	private static ActorDao instance = null;
 	
