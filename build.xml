@@ -1,8 +1,14 @@
-<project name="WebGit" basedir="." default="Catalina_redeploy">
+<project name="WebGit" basedir="." default="Catalina_undeploy">
 	
-	<property name="app.name" 					value="IsspFilmLibrary" />
-	<property name="desktop.path" 				value="C:/Users/admin/Desktop" />
-	<property name="tomcat.path" 				location="C:\Users\admin\Downloads\apache-tomcat-8.0.21-windows-x64\apache-tomcat-8.0.21\" />
+	<property name="app.name" 				value="IsspFilmLibrary" />
+	<property name="desktop.path" 			value="C:/Users/admin/Desktop" />
+	<property name="tomcat.path" 			location="C:\Users\admin\Downloads\apache-tomcat-8.0.21-windows-x64\apache-tomcat-8.0.21\" />
+	
+	<!-- 
+	==========================================================================
+	==============================CATALINA====================================
+	==========================================================================
+	-->
 	
 	<path id="project-classpath">
 		<fileset dir="${tomcat.path}/lib"	 includes="*.jar" />
