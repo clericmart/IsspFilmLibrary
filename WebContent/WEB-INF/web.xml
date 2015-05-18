@@ -1,33 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>IsspFilmLibrary</display-name>
+  <servlet>
+    <display-name>Configuration Servlet</display-name>
+    <servlet-name>config</servlet-name>
+    <servlet-class>ua.martynenko.issp.servlet.ConfigServlet</servlet-class>
+    <init-param>
+      <param-name>USER</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>PASSWORD</param-name>
+      <param-value>toor</param-value>
+    </init-param>
+    <init-param>
+      <param-name>URL</param-name>
+      <param-value>jdbc:mysql://localhost:3306/mydbtest</param-value>
+    </init-param>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
   
-	<servlet>
-		<display-name>Configuration Servlet</display-name>
-		<servlet-name>config</servlet-name>
-		<servlet-class>ua.martynenko.issp.servlet.ConfigServlet</servlet-class>
-		<init-param>
-			<param-name>USER</param-name>
-			<param-value>root</param-value>
-		</init-param>
-		<init-param>
-			<param-name>PASSWORD</param-name>
-			<param-value>toor</param-value>
-		</init-param>
-		<init-param>
-			<param-name>URL</param-name>
-			<param-value>jdbc:mysql://localhost:3306/mydbtest</param-value>
-		</init-param>
-		<load-on-startup>0</load-on-startup>
-	</servlet>
-	
-	
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-		</welcome-file-list>
+  <servlet>
+    <display-name>Login Servlet</display-name>
+    <servlet-name>login</servlet-name>
+    <servlet-class>ua.martynenko.issp.servlet.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>login</servlet-name>
+  	<url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+    <filter-name>fillog</filter-name>
+    <filter-class>ua.martynenko.issp.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>fillog</filter-name>
+    <servlet-name>login</servlet-name>
+  </filter-mapping>
+
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>

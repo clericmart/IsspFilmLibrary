@@ -1,40 +1,35 @@
 package ua.martynenko.issp.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.martynenko.issp.config.Configuration;
-
-
 /**
- * Servlet implementation class FirstServlet
+ * Servlet implementation class LoginServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/FirstServlet" }, name = "first") 
-public class FirstServlet extends HttpServlet {
+@WebServlet(asyncSupported = true)
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("First servet service!");
-		resp.getWriter().print("First Servlet" + req.getAttribute("ff") + req.getAttribute("sf"));
+		if (req.getAttribute("fillog").equals("OK")) resp.getWriter().println("You have a in your login");
+		else resp.getWriter().print("Your login fake");
 	}
-	
-	@Override
-	public void init() throws ServletException {
-		System.out.println("First servlet init");
-	}
-	
-	@Override
-	public void destroy() {
-		System.out.println("FirstServlet destroy");
-	}
+
 }

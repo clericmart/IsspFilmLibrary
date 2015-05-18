@@ -1,0 +1,38 @@
+<project name="WebGit" basedir="." default="Catalina_redeploy">
+	
+	<property name="app.name" 					value="IsspFilmLibrary" />
+	<property name="desktop.path" 				value="C:/Users/admin/Desktop" />
+	<property name="tomcat.path" 				location="C:\Users\admin\Downloads\apache-tomcat-8.0.21-windows-x64\apache-tomcat-8.0.21\" />
+	
+	<path id="project-classpath">
+		<fileset dir="${tomcat.path}/lib"	 includes="*.jar" />
+	</path>
+	
+	<taskdef name="deploy" 		classpathref="project-classpath" 	classname="org.apache.catalina.ant.DeployTask" />
+	<taskdef name="undeploy" 	classpathref="project-classpath" 	classname="org.apache.catalina.ant.UndeployTask"/>
+	
+	<target name="Catalina_deploy" description="deploy Web Application Archive">
+		<deploy 
+			url="http://localhost:8082/manager/text"
+			username="test"
+			password="111"
+			war="${desktop.path}/${app.name}.war"
+			path="/${app.name}"
+		/>
+	</target>
+	
+	<target name="Catalina_undeploy" description="undeploy Web Application Archive">
+			<undeploy
+				url="http://localhost:8082/manager/text"
+				username="test"
+				password="111"
+				path="/${app.name}"
+			/>
+	</target>
+	
+	<target name="Catalina_redeploy" description="redeploy Web Application Archive" 
+			depends="Catalina_undeploy, Catalina_deploy">
+			<echo>dk</echo>
+	</target>
+	
+</project>
