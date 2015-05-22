@@ -1,4 +1,4 @@
-package ua.martynenko.issp.bankbill;
+package ua.martynenko.issp.group;
 
 public class AccontTest {
 	

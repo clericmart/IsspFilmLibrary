@@ -42,7 +42,7 @@ public class UserLoginFilter implements Filter {
 		String temppass = "";
 		String loginxml = "";
 		String passxml = "";
-		String defaultPath = "user.xml";
+		String defaultPath = "/user.xml";
 		
 		File inputFile;
 		
@@ -67,7 +67,7 @@ public class UserLoginFilter implements Filter {
 			}
 	        
 			if (!templogin.equals("") && !temppass.equals("")) request.setAttribute("grants", "Welcome " + login + ", you can read data");
-			else resp.sendError(401);
+			else resp.sendError(401, "Only for registered users");
 			chain.doFilter(request, response); 
 		} else chain.doFilter(request, response);
 		
