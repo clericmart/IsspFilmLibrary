@@ -28,8 +28,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		if (req.getAttribute("fillog").equals("OK")) resp.getWriter().println("You have a in your login");
-		else resp.getWriter().print("Your login fake");
+		resp.getWriter().print(req.getAttribute("grants"));
 	}
 
 }

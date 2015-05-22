@@ -24,7 +24,7 @@ public class FirstServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("First servet service!");
-		resp.getWriter().print("First Servlet" + req.getAttribute("ff") + req.getAttribute("sf"));
+		resp.getWriter().print(req.getCharacterEncoding());
 	}
 	
 	@Override

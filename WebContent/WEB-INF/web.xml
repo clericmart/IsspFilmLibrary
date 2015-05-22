@@ -6,6 +6,14 @@
     <servlet-name>config</servlet-name>
     <servlet-class>ua.martynenko.issp.servlet.ConfigServlet</servlet-class>
     <init-param>
+      <param-name>admin</param-name>
+      <param-value>admin</param-value>
+    </init-param>
+    <init-param>
+      <param-name>password</param-name>
+      <param-value>admin</param-value>
+    </init-param>
+    <init-param>
       <param-name>USER</param-name>
       <param-value>root</param-value>
     </init-param>
@@ -17,30 +25,45 @@
       <param-name>URL</param-name>
       <param-value>jdbc:mysql://localhost:3306/mydbtest</param-value>
     </init-param>
+    <init-param>
+      <param-name>users</param-name>
+      <param-value>/user.xml</param-value>
+    </init-param>
     <load-on-startup>0</load-on-startup>
   </servlet>
-  
   <servlet>
     <display-name>Login Servlet</display-name>
     <servlet-name>login</servlet-name>
     <servlet-class>ua.martynenko.issp.servlet.LoginServlet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>login</servlet-name>
-  	<url-pattern>/LoginServlet</url-pattern>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
-  
   <filter>
     <filter-name>fillog</filter-name>
-    <filter-class>ua.martynenko.issp.filter.LoginFilter</filter-class>
+    <filter-class>ua.martynenko.issp.filter.AdminLoginFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>userlog</filter-name>
+    <filter-class>ua.martynenko.issp.filter.UserLoginFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>encoding</filter-name>
+    <filter-class>ua.martynenko.issp.filter.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>fillog</filter-name>
     <servlet-name>login</servlet-name>
   </filter-mapping>
-
-  
+  <filter-mapping>
+    <filter-name>userlog</filter-name>
+    <servlet-name>login</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

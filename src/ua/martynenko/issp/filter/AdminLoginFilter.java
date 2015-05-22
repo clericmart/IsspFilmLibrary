@@ -10,29 +10,28 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 //import javax.servlet.http.HttpServletResponse;
-/**
- * Servlet Filter implementation class LoginFilter
- */
+
+import ua.martynenko.issp.config.Configuration;
+
 @WebFilter("/LoginFilter")
-public class LoginFilter implements Filter {
+public class AdminLoginFilter implements Filter {
 
 
 	/**
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-		String templog = request.getParameter("login");
-//		String temppass = request.getParameter("password");
-		if (templog.contains("a")) request.setAttribute("fillog", "OK");
-		else request.setAttribute("fillog", "Fake");
-		// pass the request along the filter chain
+		
+		Configuration config = Configuration.getInstance();
+		
+		String templog = config.getParameter("admin");
+		String temppass = config.getParameter("password");
 //		HttpServletResponse resp = (HttpServletResponse) response;
+		if (request.getParameter("login").equals(templog) && request.getParameter("password").equals(temppass)) request.setAttribute("grants", "Hello admin, you can read, write, and delete data");
+//		else resp.sendError(401);
 		
 		chain.doFilter(request, response);
 	}
@@ -41,7 +40,6 @@ public class LoginFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }
