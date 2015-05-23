@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		resp.getWriter().print(req.getAttribute("grants"));
+		resp.sendRedirect("jsp/main.jsp");
 	}
 
 }
