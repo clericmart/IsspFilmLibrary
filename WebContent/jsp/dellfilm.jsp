@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="style.css" type="text/css" />
-<title>Add film to library</title>
+<title>Delete film from library</title>
 </head>
 <body>
 	<div class="header">
