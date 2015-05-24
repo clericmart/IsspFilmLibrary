@@ -19,12 +19,12 @@ public class MainJspHome {
 	public int[] getArray() {
 		return Array;
 	}
-	public void generateArray(String a) {
+	public void generateArray(String a, String b) {
 		Random rand = new Random();
 		int size = Integer.parseInt(a);
 			Array = new int[size];
 			for (int i = 0; i < size; i++)
-				Array[i] = rand.nextInt(50) - 25;
+				Array[i] = rand.nextInt(Integer.parseInt(b) * 2) - Integer.parseInt(b);
 	}
 	
 	public String showArray() {

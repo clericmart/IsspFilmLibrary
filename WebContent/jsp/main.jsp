@@ -70,6 +70,7 @@
 					<input type="radio" name="order" value="down"> по убыванию <p></p>
 				<input type="submit" value="Сортировать">
 			</form>
+			<a href="easyhome.jsp">Домашка с массивами</a>
 		</div><!-- .left-sidebar -->
 
 	</div><!-- .middle-->

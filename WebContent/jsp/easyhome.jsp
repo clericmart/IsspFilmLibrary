@@ -11,6 +11,7 @@
 <body>
 	<form>
 		Введите размер массива: <input type="text" name="arraysize" value=50 size="5">
+		Введите максимальное число в массиве: <input type="text" name="maxnumber" value=100 size="5">
 		Введите число: <input type="text" name="number" value=2 size="5"> <br> 
 		<input type="checkbox" name="new" checked="checked"> Сгенерировать новый массив? <br>
 		<input type="checkbox" name="middle" checked="checked"> Вывести среднее значение элементов массива. <br>
@@ -21,7 +22,7 @@
 	<%  
 		MainJspHome smth = MainJspHome.getInstance();
 		if (request.getParameter("new") != null) {
-		if (request.getParameter("arraysize") != null) smth.generateArray(request.getParameter("arraysize"));
+		if (request.getParameter("arraysize") != null) smth.generateArray(request.getParameter("arraysize"), request.getParameter("maxnumber"));
 			} if (smth.getArray() != null) out.print("Сгенеренный массив:" + smth.showArray() + "<br>");
 		if (request.getParameter("middle") != null && request.getParameter("middle").equals("on") && smth.getArray() != null) 
 			out.print("Среднее значение массива: " + smth.middleArray() + "<br>");
