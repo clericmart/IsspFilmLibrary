@@ -68,7 +68,7 @@ public class FilmDb {
 			if (!genres.isEmpty()) list.get(index).setGenres(genres);
 			return true;}
 	}
-	
+
 	public void sortDb(String a){
 		switch (a.toLowerCase()) {
 		case "titleup":
@@ -152,7 +152,5 @@ public class FilmDb {
 			});
 			break;
 		}
-	}
-	
-	
+	}	
 }
