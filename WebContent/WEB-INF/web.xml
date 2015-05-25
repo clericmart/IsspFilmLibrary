@@ -72,12 +72,4 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <jsp-config>
-  	<jsp-property-group>
-  		<url-pattern></url-pattern>
-  		<page-encoding>UTF-8</page-encoding>
-  		<error-on-undeclared-namespace>true</error-on-undeclared-namespace>
-  		
-  	</jsp-property-group>
-  </jsp-config>
 </web-app>

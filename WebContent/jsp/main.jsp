@@ -71,6 +71,7 @@
 				<input type="submit" value="Сортировать">
 			</form>
 			<a href="easyhome.jsp">Домашка с массивами</a>
+			<a href="documenteasyhome.jsp">Домашка с массивами в документ</a>
 		</div><!-- .left-sidebar -->
 
 	</div><!-- .middle-->
