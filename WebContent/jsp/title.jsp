@@ -5,12 +5,18 @@
 <html>
 
 <body>
-	<c:forEach begin="0" end="10" step="1">fjdkl</c:forEach>
+	<form action="title.jsp">
+		<input type="text" name="title"/>
+		<input type="submit" value="Отправить"/> 
+	</form>
 	<jsp:scriptlet> 
 	if (request.getParameter("title") != null){
 	String s = request.getParameter("title");
-	response.getWriter().print(s);}
-	
+	for (int i = 0; i \u003C s.length(); i++){
+		out.print("\u003Cp\u003E");
+		for (int j = 0; j \u003C i; j++) out.print("\u0026nbsp;");
+		out.print(s.charAt(i) + "\u003C/p\u003E");}
+	}
 	</jsp:scriptlet>
 </body>
 </html>
