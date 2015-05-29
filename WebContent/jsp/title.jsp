@@ -1,5 +1,9 @@
 <jsp:root version="2.0" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<jsp:directive.page import="org.apache.jasper.tagplugins.jstl.core.ForEach"/>
+<jsp:directive.page import="ua.martynenko.issp.group.Arr"/>
 <jsp:directive.page import="java.util.Date"/>
+<jsp:directive.page import="java.util.regex.Matcher"/>
+<jsp:directive.page import="java.util.regex.Pattern"/>
 <jsp:directive.page contentType="text/html"
     pageEncoding="UTF-8"/>
 <html>
@@ -9,14 +13,23 @@
 		<input type="text" name="title"/>
 		<input type="submit" value="Отправить"/> 
 	</form>
-	<jsp:scriptlet> 
-	if (request.getParameter("title") != null){
-	String s = request.getParameter("title");
-	for (int i = 0; i \u003C s.length(); i++){
-		out.print("\u003Cp\u003E");
-		for (int j = 0; j \u003C i; j++) out.print("\u0026nbsp;");
-		out.print(s.charAt(i) + "\u003C/p\u003E");}
-	}
+	<jsp:scriptlet>
+		Arr a = new Arr();
+		if (request.getParameter("title") != null) {
+		String [] mass = a.getString(request.getParameter("title"));
+		String regex = "[.,?!]";
+		Pattern p = Pattern.compile(regex);
+		for (int i = 0; i \u003C mass.length; i++) {
+		Matcher m = p.matcher(mass[i]);
+			if(m.find()) {
+		    	out.print(mass[i].replaceAll(regex, "") + "\u003Cbr\u003E");   
+		    } else
+			out.println(mass[i] + "\u003Cbr\u003E");
+		}
+		
+		}
+		
+		
 	</jsp:scriptlet>
 </body>
 </html>
