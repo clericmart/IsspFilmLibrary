@@ -131,7 +131,7 @@
 		
 		<target name="Catalina_redeploy" description="redeploy Web Application Archive" 
 				depends="Catalina_undeploy, Catalina_deploy">
-				<echo>dk</echo>
+				<echo>Redeploy Success</echo>
 		</target>
 	
 </project>
