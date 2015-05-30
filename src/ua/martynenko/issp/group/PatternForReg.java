@@ -22,15 +22,15 @@ public class PatternForReg {
 						m = p.matcher(args[2]);
 						if (m.find()) {
 							if (m.end() == args[2].length() && m.start() == 0) result = "OK";
-							else if (m.end() < args[2].length() && m.start() == 0) result = "Mistake in phone, position " + m.end();
+							else if (m.end() < args[2].length() && m.start() == 0) result = "Mistake in phone, position " + (m.end() + 1);
 							else if (m.end() == args[2].length() && m.start() > 0) result = "Mistake in phone, position " + m.start();
 						} else result = "Check the phone spelling";
 					}
-					else if (m.end() < args[1].length() && m.start() == 0) result = "Mistake in email, position " + m.end();
+					else if (m.end() < args[1].length() && m.start() == 0) result = "Mistake in email, position " + (m.end() + 1);
 					else if (m.end() == args[1].length() && m.start() > 0) result = "Mistake in email, position " + m.start();
 				} else result = "Check the email spelling";
 			}
-			else if (m.end() < args[0].length() && m.start() == 0) result = "Mistake in name, position " + m.end();
+			else if (m.end() < args[0].length() && m.start() == 0) result = "Mistake in name, position " + (m.end() + 1);
 			else if (m.end() == args[0].length() && m.start() > 0) result = "Mistake in name, position " + m.start();
         } else result = "Check the name spelling";
 		
