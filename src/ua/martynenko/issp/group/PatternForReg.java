@@ -10,29 +10,29 @@ public class PatternForReg {
 	public static String result = "c";
 	
 	public static void main(String[] args) {
-		Pattern p = Pattern.compile(nameRegex); // проверка имени (4!)
+		Pattern p = Pattern.compile(nameRegex); // name (4!)
 		Matcher m = p.matcher(args[0]);
 		if (m.find()) {
 			if (m.end() == args[0].length() && m.start() == 0) {
-				p = Pattern.compile(emailRegex); // проверка почты если имя ок
+				p = Pattern.compile(emailRegex); // email
 				m = p.matcher(args[1]);
 				if (m.find()) {
 					if (m.end() == args[1].length() && m.start() == 0) {
-						p = Pattern.compile(phoneRegex); // проверка телефона если почта ок
+						p = Pattern.compile(phoneRegex); // phone
 						m = p.matcher(args[2]);
 						if (m.find()) {
 							if (m.end() == args[2].length() && m.start() == 0) result = "OK";
-							else if (m.end() < args[2].length() && m.start() == 0) result = "Ошибка в телефоне позиция " + m.end();
-							else if (m.end() == args[2].length() && m.start() > 0) result = "Ошибка в телефоне позиция " + m.start();
-						} else result = "Проверьте правильность написания телефона";
+							else if (m.end() < args[2].length() && m.start() == 0) result = "Mistake in phone, position " + m.end();
+							else if (m.end() == args[2].length() && m.start() > 0) result = "Mistake in phone, position " + m.start();
+						} else result = "Check the phome spelling";
 					}
-					else if (m.end() < args[1].length() && m.start() == 0) result = "Ошибка в почте позиция " + m.end();
-					else if (m.end() == args[1].length() && m.start() > 0) result = "Ошибка в почте позиция " + m.start();
-				} else result = "Проверьте правильность написания почты";
+					else if (m.end() < args[1].length() && m.start() == 0) result = "Mistake in email, position " + m.end();
+					else if (m.end() == args[1].length() && m.start() > 0) result = "Mistake in email, position " + m.start();
+				} else result = "Check the email spelling";
 			}
-			else if (m.end() < args[0].length() && m.start() == 0) result = "Ошибка в имени позиция " + m.end();
-			else if (m.end() == args[0].length() && m.start() > 0) result = "Ошибка в имени позиция " + m.start();
-        } else result = "Проверьте правильность написания имени";
+			else if (m.end() < args[0].length() && m.start() == 0) result = "Mistake in name, position " + m.end();
+			else if (m.end() == args[0].length() && m.start() > 0) result = "Mistake in name, position " + m.start();
+        } else result = "Check the name spelling";
 		
 		System.out.println(result);
 
