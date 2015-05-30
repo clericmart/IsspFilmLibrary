@@ -1,0 +1,16 @@
+<jsp:root version="2.0" xmlns:jsp="http://java.sun.com/JSP/Page">
+<jsp:directive.page import="ua.martynenko.issp.group.PatternForReg"/>
+<jsp:directive.page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"/>
+<html>
+<head>
+<title>Pattern</title>
+</head>
+<body>
+	<jsp:scriptlet>
+		String [] mass = {request.getParameter("name"), request.getParameter("email"), request.getParameter("phone")};
+		PatternForReg.main(mass);
+		out.print(PatternForReg.result);
+	</jsp:scriptlet>
+</body>
+</html>
+</jsp:root>

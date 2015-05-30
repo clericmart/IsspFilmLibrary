@@ -5,7 +5,7 @@
 <title>Registration</title>
 </head>
 <body>
-	<form action="pattern.jsp">
+	<form action="pattern.jspx">
 		Имя: <input type="text" name="name"/><br/>
 		Почта: <input type="text" name="email"/><br/>
 		Телефон: <input type="text" name="phone"/><br/>

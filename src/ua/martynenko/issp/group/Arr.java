@@ -1,6 +1,5 @@
 package ua.martynenko.issp.group;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
 
 public class Arr {
    String text;

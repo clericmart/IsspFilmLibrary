@@ -24,7 +24,7 @@ public class PatternForReg {
 							if (m.end() == args[2].length() && m.start() == 0) result = "OK";
 							else if (m.end() < args[2].length() && m.start() == 0) result = "Mistake in phone, position " + m.end();
 							else if (m.end() == args[2].length() && m.start() > 0) result = "Mistake in phone, position " + m.start();
-						} else result = "Check the phome spelling";
+						} else result = "Check the phone spelling";
 					}
 					else if (m.end() < args[1].length() && m.start() == 0) result = "Mistake in email, position " + m.end();
 					else if (m.end() == args[1].length() && m.start() > 0) result = "Mistake in email, position " + m.start();
