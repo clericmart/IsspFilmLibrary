@@ -93,7 +93,10 @@
 				<manifest>
 					<attribute name="Create-By" 	value="${application.author}"/>
 					<attribute name="Version" 		value="${application.version}"/>
-				</manifest>		
+				</manifest>
+				<metainf dir="${servlet.comfig}">
+					<include name="context.xml"/>
+				</metainf>
 			</war>
 		</target>
 	

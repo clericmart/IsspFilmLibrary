@@ -40,6 +40,7 @@
     <servlet-name>login</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  
   <filter>
     <filter-name>fillog</filter-name>
     <filter-class>ua.martynenko.issp.filter.AdminLoginFilter</filter-class>
@@ -64,8 +65,13 @@
     <filter-name>encoding</filter-name>
     <url-pattern>/LoginServlet</url-pattern>
   </filter-mapping>
+  <resource-ref>
+    <res-ref-name>jdbc/issp</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
   <welcome-file-list>
-  	<welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>default.html</welcome-file>
